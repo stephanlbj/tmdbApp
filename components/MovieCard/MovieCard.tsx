@@ -7,7 +7,7 @@ interface MovieProps {
   index: number;
 }
 
-export const Movie = ({ movie, index }: MovieProps) => {
+export default function MovieCard({ movie, index }: MovieProps) {
   const id = movie.id ?? 0;
   const title = movie.title ?? "Titre inconnu";
   const posterPath = movie.poster_path ?? null;
@@ -51,4 +51,4 @@ export const Movie = ({ movie, index }: MovieProps) => {
       </h2>
     </Link>
   );
-};
+}

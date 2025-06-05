@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { TMDBMovie } from "@/types/movie";
 import { getTMDBService } from "@/services/tmdb";
+import CustomParagraph from "@/components/CustomParagraph/CustomParagraph";
 
 export default async function MovieDetailPage({
   params,
@@ -11,7 +12,7 @@ export default async function MovieDetailPage({
   const movieId = Number(id);
 
   if (isNaN(movieId)) {
-    return <p>Paramètre invalide</p>;
+    return <CustomParagraph message="Paramètre invalide" />;
   }
 
   const tmdb = getTMDBService();
@@ -26,10 +27,10 @@ export default async function MovieDetailPage({
       message = error.message;
     }
 
-    return <p>{message}</p>;
+    return <CustomParagraph message={message} />;
   }
 
-  if (!movie) return <p>Film introuvable</p>;
+  if (!movie) return <CustomParagraph message="Film introuvable" />;
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mb-10">
@@ -49,7 +50,7 @@ export default async function MovieDetailPage({
           />
         </div>
       ) : (
-        <div className="w-full h-64 bg-gray-300 flex items-center justify-center mb-6 rounded-lg text-center text-sm text-gray-600">
+        <div className="w-full h-64 bg-gray-300  flex items-center justify-center mb-6 rounded-lg text-center text-sm text-gray-600">
           Image non disponible
         </div>
       )}
