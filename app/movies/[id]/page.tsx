@@ -41,7 +41,7 @@ export default async function MovieDetailPage({
         <div className="relative w-full aspect-[2/3] md:aspect-[3/4] max-w-md mx-auto md:mx-0 mb-6">
           <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
+            alt={movie.title + movieId}
             fill
             className="rounded-lg object-cover"
             priority

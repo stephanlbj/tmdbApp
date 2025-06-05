@@ -4,9 +4,10 @@ import { Movie as MovieType } from "@/types/movie";
 
 interface MovieProps {
   movie: Pick<MovieType, "id" | "title" | "poster_path">;
+  index: number;
 }
 
-export const Movie = ({ movie }: MovieProps) => {
+export const Movie = ({ movie, index }: MovieProps) => {
   const id = movie.id ?? 0;
   const title = movie.title ?? "Titre inconnu";
   const posterPath = movie.poster_path ?? null;
@@ -31,9 +32,10 @@ export const Movie = ({ movie }: MovieProps) => {
         <div className="relative w-full aspect-[2/3] rounded-md overflow-hidden">
           <Image
             src={`https://image.tmdb.org/t/p/w500${posterPath}`}
-            alt={title}
+            alt={title + id}
             fill
             className="object-cover"
+            loading={index < 7 ? "eager" : "lazy"}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>
