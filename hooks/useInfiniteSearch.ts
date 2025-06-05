@@ -9,22 +9,23 @@ import { getTMDBService } from "@/services/tmdb";
 
 const tmdb = getTMDBService();
 
-export const useInfiniteMovies = () => {
+export const useInfiniteSearch = (query: string) => {
   const queryClient = useQueryClient();
 
   const cached = queryClient.getQueryData<InfiniteData<TMDBPage, number>>([
-    "movies",
+    "search",
   ]);
 
   return useInfiniteQuery<
     TMDBPage,
     unknown,
     InfiniteData<TMDBPage, number>,
-    [string],
+    [string, string],
     number
   >({
-    queryKey: ["movies"],
-    queryFn: ({ pageParam = 1 }) => tmdb.fetchPopularMovies(pageParam),
+    queryKey: ["search", query],
+    queryFn: ({ pageParam = 1 }) => tmdb.searchMovies(query, pageParam),
+    enabled: query.length > 0,
     getNextPageParam: (lastPage) =>
       lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined,
     initialPageParam: 1,

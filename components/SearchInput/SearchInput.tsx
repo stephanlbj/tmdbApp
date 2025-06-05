@@ -1,32 +1,33 @@
 "use client";
+import { useSearch } from "@/providers/Provider";
 import React, { useState, useEffect } from "react";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface SearchInputProps {
   placeholder?: string;
-  onSearch?: (query: string) => void;
   debounceTime?: number;
   style?: React.CSSProperties;
-  initialValue?: string;
   classname?: string;
 }
 
 export default function SearchInput({
   placeholder = "Search...",
-  onSearch,
-  debounceTime = 300,
+  debounceTime = 500,
   style,
-  initialValue = "",
   classname,
 }: SearchInputProps) {
-  const [inputValue, setInputValue] = useState(initialValue);
+  const { searchQuery, setSearchQuery } = useSearch();
+  const [inputValue, setInputValue] = useState(searchQuery);
+
+  const debouncedInput = useDebounce(inputValue, debounceTime);
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      if (onSearch) onSearch(inputValue);
-    }, debounceTime);
+    setSearchQuery(debouncedInput);
+  }, [debouncedInput, setSearchQuery]);
 
-    return () => clearTimeout(handler);
-  }, [inputValue, onSearch, debounceTime]);
+  useEffect(() => {
+    setInputValue(searchQuery);
+  }, [searchQuery]);
 
   return (
     <input
