@@ -16,8 +16,8 @@ export class TMDBService {
     return this.get<TMDBPage>(TMDB_API.popular(page));
   }
 
-  searchMovies(query: string) {
-    return this.get<TMDBPage[]>(TMDB_API.search(query));
+  searchMovies(query: string, page: number = 1): Promise<TMDBPage> {
+    return this.get<TMDBPage>(TMDB_API.search(query, page));
   }
 
   fetchMovieDetails(id: number) {

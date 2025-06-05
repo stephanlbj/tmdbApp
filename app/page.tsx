@@ -7,6 +7,7 @@ import { getQueryClient } from "@/lib/reactQueryClient";
 import { getTMDBService } from "@/services/tmdb";
 import { MovieList } from "@/components/MovieList/MovieList";
 import { TMDBPage } from "@/types/movie";
+import SearchInput from "@/components/SearchInput/SearchInput";
 
 export default async function Home() {
   const queryClient = getQueryClient();
@@ -28,8 +29,11 @@ export default async function Home() {
   });
 
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <MovieList />
-    </HydrationBoundary>
+    <>
+      <SearchInput />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <MovieList />
+      </HydrationBoundary>
+    </>
   );
 }
