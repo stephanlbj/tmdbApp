@@ -56,7 +56,13 @@ NEXT_PUBLIC_API_URL=https://api.themoviedb.org/3
 📜 Scripts disponibles
 
 npm run dev # Démarrer l'application en mode développement
+
 npm run build # Construire l'application pour la production
+
 npm run start # Lancer le build
+
 npm run test # Exécuter tous les tests unitaires
+
 npm run test:watch # Lancer les tests en mode interactif (TDD)
+
+
