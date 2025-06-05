@@ -1,5 +1,5 @@
 import { TMDB_API } from "@/constants/tmdbRoutes";
-import { TMDBPage } from "@/types/movie";
+import { TMDBMovie, TMDBPage } from "@/types/movie";
 
 export class TMDBService {
   constructor(private apiKey: string) {}
@@ -20,7 +20,7 @@ export class TMDBService {
     return this.get<TMDBPage[]>(TMDB_API.search(query));
   }
 
-  fetchMovieDetails(id: string) {
-    return this.get<TMDBPage>(TMDB_API.details(id));
+  fetchMovieDetails(id: number) {
+    return this.get<TMDBMovie>(TMDB_API.details(id));
   }
 }
