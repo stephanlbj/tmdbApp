@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { TMDBService } from "@/services/tmdbServices";
 import { TMDBMovie } from "@/types/movie";
-
-const tmdb = new TMDBService(process.env.NEXT_PUBLIC_API_KEY!);
+import { getTMDBService } from "@/services/tmdb";
 
 export default async function MovieDetailPage({
   params,
@@ -15,6 +13,8 @@ export default async function MovieDetailPage({
   if (isNaN(movieId)) {
     return <p>Paramètre invalide</p>;
   }
+
+  const tmdb = getTMDBService();
 
   let movie: TMDBMovie;
   try {

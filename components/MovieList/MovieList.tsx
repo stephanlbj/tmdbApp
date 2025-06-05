@@ -23,7 +23,8 @@ export const MovieList = () => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
       {movies.map((movie, index) => (
-        <Movie key={movie.id} movie={movie} index={index} />
+        // key={`${movie.id}-${index}`} Non recommandé sauf cas extrême
+        <Movie key={`${movie.id}-${index}`} movie={movie} index={index} />
       ))}
       <div ref={loadMoreRef} className="h-8 col-span-full">
         {isFetchingNextPage && <p>Chargement...</p>}

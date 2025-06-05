@@ -1,32 +1,10 @@
-import {
-  HydrationBoundary,
-  InfiniteData,
-  dehydrate,
-} from "@tanstack/react-query";
-import { getQueryClient } from "@/lib/reactQueryClient";
-import { getTMDBService } from "@/services/tmdb";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { MovieList } from "@/components/MovieList/MovieList";
-import { TMDBPage } from "@/types/movie";
 import SearchInput from "@/components/SearchInput/SearchInput";
+import { prefetchPopularMovies } from "@/lib/prefetch/prefetchPopularMovies";
 
 export default async function Home() {
-  const queryClient = getQueryClient();
-  const tmdb = getTMDBService();
-
-  await queryClient.prefetchInfiniteQuery<
-    TMDBPage,
-    unknown,
-    InfiniteData<TMDBPage, number>,
-    ["movies"],
-    number
-  >({
-    queryKey: ["movies"],
-    queryFn: ({ pageParam = 1 }: { pageParam: number }) =>
-      tmdb.fetchPopularMovies(pageParam),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage: TMDBPage) =>
-      lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined,
-  });
+  const queryClient = await prefetchPopularMovies();
 
   return (
     <>

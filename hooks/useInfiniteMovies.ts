@@ -28,5 +28,6 @@ export const useInfiniteMovies = () => {
       lastPage.page < lastPage.total_pages ? lastPage.page + 1 : undefined,
     initialPageParam: 1,
     initialData: cached as InfiniteData<TMDBPage, number> | undefined,
+    refetchOnWindowFocus: false,
   });
 };

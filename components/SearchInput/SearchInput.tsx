@@ -36,7 +36,7 @@ export default function SearchInput({
       className={
         classname
           ? classname
-          : "block w-full max-w-md p-2.5 mt-10 mx-auto mb-2.5 box-border"
+          : "block w-full max-w-md p-2.5 mt-10 mx-auto mb-2.5 box-border border-gray-500"
       }
       onChange={(e) => setInputValue(e.target.value)}
       style={style}

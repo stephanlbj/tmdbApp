@@ -36,6 +36,7 @@ export const Movie = ({ movie, index }: MovieProps) => {
             fill
             className="object-cover"
             loading={index < 7 ? "eager" : "lazy"}
+            priority={index < 7}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>
