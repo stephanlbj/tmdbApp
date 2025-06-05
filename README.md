@@ -65,4 +65,4 @@ npm run test # Exécuter tous les tests unitaires
 
 npm run test:watch # Lancer les tests en mode interactif (TDD)
 
-
+![core web vitals](./public/perf.PNG)
