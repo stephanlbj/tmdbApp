@@ -25,7 +25,7 @@ describe("SearchInput", () => {
     const input = screen.getByPlaceholderText("search movie...");
     expect(input).toBeInTheDocument();
     expect(input).toHaveClass(
-      "block w-full max-w-md p-2.5 mt-10 mx-auto mb-2.5 box-border border-gray-500"
+      "block w-full max-w-md p-2.5 mt-10 mx-auto mb-2.5 border-gray-900 bg-gray-300"
     );
   });
 

@@ -13,6 +13,9 @@ export function MovieGrid({
   loadMoreRef,
   isFetchingNextPage,
 }: MovieGridProps) {
+  if (movies.length === 0) {
+    return <CustomParagraph message="No result found!!" />;
+  }
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
       {movies.map((movie, index) => (
