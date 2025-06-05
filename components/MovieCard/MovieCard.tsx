@@ -2,8 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Movie as MovieType } from "@/types/movie";
 
+type MoviePartial = Omit<
+  Pick<MovieType, "id" | "title" | "poster_path">,
+  "title"
+> & {
+  title?: string | null;
+};
+
 interface MovieProps {
-  movie: Pick<MovieType, "id" | "title" | "poster_path">;
+  movie: MoviePartial;
   index: number;
 }
 

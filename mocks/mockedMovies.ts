@@ -1,0 +1,93 @@
+import { Movie, TMDBMovie } from "@/types/movie";
+
+export const mockedMovies: Movie[] = [
+  {
+    adult: false,
+    backdrop_path: "/path/to/backdrop1.jpg",
+    genre_ids: [28, 12],
+    id: 101,
+    original_language: "en",
+    original_title: "Original Title 1",
+    overview: "Overview of the first movie.",
+    popularity: 150.5,
+    poster_path: "/path/to/poster1.jpg",
+    release_date: "2024-05-10",
+    title: "Movie Title 1",
+    video: false,
+    vote_average: 7.8,
+    vote_count: 1200,
+  },
+  {
+    adult: false,
+    backdrop_path: null,
+    genre_ids: [35, 18],
+    id: 102,
+    original_language: "fr",
+    original_title: "Titre Original 2",
+    overview: "Résumé du deuxième film.",
+    popularity: 98.3,
+    poster_path: "/path/to/poster2.jpg",
+    release_date: "2023-11-22",
+    title: "Movie Title 2",
+    video: false,
+    vote_average: 6.5,
+    vote_count: 850,
+  },
+];
+
+export const mockTMDBMovie: TMDBMovie = {
+  adult: false,
+  backdrop_path: "/backdrop_path_example.jpg",
+  belongs_to_collection: {
+    id: 123,
+    name: "Example Collection",
+    poster_path: "/collection_poster.jpg",
+    backdrop_path: "/collection_backdrop.jpg",
+  },
+  budget: 150000000,
+  genres: [
+    { id: 28, name: "Action" },
+    { id: 12, name: "Adventure" },
+  ],
+  homepage: "https://www.examplemovie.com",
+  id: 456,
+  imdb_id: "tt1234567",
+  origin_country: ["US"],
+  original_language: "en",
+  original_title: "Original Movie Title",
+  overview:
+    "This is a mock overview of the movie. It tells a thrilling story of adventure and heroism.",
+  popularity: 98.7,
+  poster_path: "/poster_path_example.jpg",
+  production_companies: [
+    {
+      id: 1,
+      logo_path: "/logo1.png",
+      name: "Example Studios",
+      origin_country: "US",
+    },
+    {
+      id: 2,
+      logo_path: null,
+      name: "Another Production Company",
+      origin_country: "GB",
+    },
+  ],
+  production_countries: [
+    { iso_3166_1: "US", name: "United States of America" },
+    { iso_3166_1: "GB", name: "United Kingdom" },
+  ],
+  release_date: "2024-07-15",
+  revenue: 500000000,
+  runtime: 130,
+  spoken_languages: [
+    { english_name: "English", iso_639_1: "en", name: "English" },
+    { english_name: "French", iso_639_1: "fr", name: "Français" },
+  ],
+  status: "Released",
+  tagline: "An epic adventure awaits.",
+  title: "Mock Movie Title",
+  video: false,
+  vote_average: 8.2,
+  vote_count: 4500,
+};

@@ -11,7 +11,7 @@ interface SearchInputProps {
 }
 
 export default function SearchInput({
-  placeholder = "Search...",
+  placeholder = "search movie...",
   debounceTime = 500,
   style,
   classname,
@@ -31,7 +31,6 @@ export default function SearchInput({
 
   return (
     <input
-      type="search movie..."
       placeholder={placeholder}
       value={inputValue}
       className={

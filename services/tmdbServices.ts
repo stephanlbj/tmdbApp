@@ -31,7 +31,7 @@ export class TMDBService {
     return this.get<TMDBPage>(TMDB_API.search(query, page));
   }
 
-  fetchMovieDetails(id: number): Promise<TMDBMovie> {
+  async fetchMovieDetails(id: number): Promise<TMDBMovie> {
     return this.get<TMDBMovie>(TMDB_API.details(id), {
       next: { revalidate: 3600 },
       cache: "force-cache",
