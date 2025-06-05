@@ -1,0 +1,26 @@
+import { TMDB_API } from "@/constants/tmdbRoutes";
+import { TMDBPage } from "@/types/movie";
+
+export class TMDBService {
+  constructor(private apiKey: string) {}
+
+  private async get<T>(path: string): Promise<T> {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}${path}&api_key=${this.apiKey}`
+    );
+    if (!res.ok) throw new Error(`TMDB API error: ${res.status}`);
+    return res.json();
+  }
+
+  fetchPopularMovies(page = 1) {
+    return this.get<TMDBPage>(TMDB_API.popular(page));
+  }
+
+  searchMovies(query: string) {
+    return this.get<TMDBPage[]>(TMDB_API.search(query));
+  }
+
+  fetchMovieDetails(id: string) {
+    return this.get<TMDBPage>(TMDB_API.details(id));
+  }
+}
