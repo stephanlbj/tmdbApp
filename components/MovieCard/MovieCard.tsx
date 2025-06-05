@@ -33,7 +33,7 @@ export default function MovieCard({ movie, index }: MovieProps) {
   return (
     <Link
       href={`/movies/${id}`}
-      className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 p-2"
+      className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 p-2 cursor-pointer"
     >
       {posterPath ? (
         <div className="relative w-full aspect-[2/3] rounded-md overflow-hidden">

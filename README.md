@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 Movie Explorer
 
-## Getting Started
+**Movie Explorer** est une application web construite avec **Next.js 15** permettant de rechercher et d'explorer des films depuis l'API **TMDb**. Elle combine des bonnes pratiques front-end modernes : fetch optimisé, pagination infinie, debounced search, typage strict TypeScript, tests unitaires robustes, et une UI responsive.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Fonctionnalités
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Principles SOLID : L'architecture du projet est conçue dans le respect des principes SOLID (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion), garantissant un code modulaire, facile à étendre et à maintenir sur le long terme.
+- 🔍 Recherche avec debounce (optimisée pour éviter les appels excessifs à l'API)
+- ♾️ Scroll infini via `IntersectionObserver` avec React Query
+- 🧠 Contexte global pour partager l'état de recherche (`useSearch`)
+- ⚡ Images optimisées avec `next/image` + stratégie `lazy/eager` basée sur l’index
+- 🧪 Tests unitaires (mock de contexte, tests d’accessibilité, rendering conditionnel)
+- 🧰 Développement typé avec TypeScript
+- 💅 Interface responsive avec Tailwind CSS 4
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Technologies utilisées
 
-## Learn More
+| Technologie         | Usage principal                          |
+| ------------------- | ---------------------------------------- |
+| **Next.js 15**      | Framework principal (App Router)         |
+| **React 19**        | Moteur UI                                |
+| **TypeScript 5**    | Typage statique                          |
+| **React Query 5**   | Fetch / cache / infinite scroll          |
+| **Tailwind CSS 4**  | Style utilitaire responsive              |
+| **Jest**            | Framework de tests                       |
+| **Testing Library** | Tests d'intégration orientés utilisateur |
+| **Undici**          | Fetch HTTP bas niveau pour les mocks     |
+| **Nock**            | Mock d’API pour les tests                |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+git clone https://github.com/stephanlbj/tmdbApp.git
+cd tmdbapp
+npm install
 
-## Deploy on Vercel
+# ou
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+yarn install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔐 Configuration
+
+⚠️ Remarque importante :
+
+## Les clés suivantes sont uniquement présentes ici pour faciliter les tests du projet. Elles seront désactivées après la démonstration ou l'évaluation..
+
+NEXT_PUBLIC_API_KEY=a3b521de3e82a57c16097116a57fb30d
+TMDB_ACCESS_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhM2I1MjFkZTNlODJhNTdjMTYwOTcxMTZhNTdmYjMwZCIsIm5iZiI6MS42MDY1NzgwNjYzMjYwMDAyZSs5LCJzdWIiOiI1ZmMyNmY5MmE2NzI1NDAwNDA2ZmU3ZDAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.CISqCXJV01cRH06JxdsWD1sxja0qUmqGmsMscqTGgNk
+NEXT_PUBLIC_API_URL=https://api.themoviedb.org/3
+
+📜 Scripts disponibles
+
+npm run dev # Démarrer l'application en mode développement
+npm run build # Construire l'application pour la production
+npm run start # Lancer le build
+npm run test # Exécuter tous les tests unitaires
+npm run test:watch # Lancer les tests en mode interactif (TDD)
